@@ -1,6 +1,7 @@
 # AngularJS Post Message API Wrapper
 
-[TODO - brief summary]
+AngularJS Post Message API Wrapper.  
+Developed for communication between two Angular apps, but can be used with non-angular apps as well.  
 
 ## Demo
 http://petarslovic.github.io/ng-post-message/
@@ -8,26 +9,52 @@ http://petarslovic.github.io/ng-post-message/
 ## Dependencies
 - required:
 	lodash
-- optional
-	
 
 See `bower.json` and `index.html` in the `gh-pages` branch for a full list / more details
 
 ## Install
-1. download the files
-	1. Bower
-		1. add `"ng-post-message": "latest"` to your `bower.json` file then run `bower install` OR run `bower install ng-post-message`
-2. include the files in your app
-	1. `post-message.min.js`
-3. include the module in angular (i.e. in `app.js`) - `petarslovic.ng-post-message`
+### Get the files
+	Bower  
+		add `"ng-post-message": "latest"` to your `bower.json` file then run `bower install` OR run `bower install ng-post-message`
+
+### Include the files in your app
+  `post-message.min.js`
+
+### Include the module in angular  
+  i.e. in `app.js` - `petarslovic.ng-post-message`
 
 See the `gh-pages` branch, files `bower.json` and `index.html` for a full example.
 
 
 ## Documentation
-See the `post-message.js` file top comments for usage examples and documentation
-https://github.com/petarslovic/ng-post-message/blob/master/post-message.js
 
+### Configuration
+
+To configure ng-post-message, inject it in the config phase like so:
+```
+  angular
+    .module('your-module')
+    .config(function(PostMessageProvider) {
+      PostMessageProvider.setAllowedDomains(['http://petarslovic.github.io']);
+    });
+`
+
+- **PostMessageProvider.setAllowedDomains(array)**  
+Set the list of domains that your app can communicate with.  
+This list will be checked when your app receives a message.
+
+### API
+
+- **PostMessage.on(*messageName*, *callback*)**  
+Registers message listeners.  
+Message name is like an event name, and callback will be executed when the message arrives.  
+When your callback is invoked, it will be provided the original event and message data as parameters in that order.  
+Message data is an object containing `messageName` and `data`.
+
+- **PostMessage.send(*messageName*, *data*, *iframeName*, *domain*)**  
+Sends a message with name `messageName` and data `data` to iframe with `[name="*iframeName*"]` that is located on the domain `domain`.  
+If you provide null as an `iframeName` the message will be sent to `window.parent` (for sending messages from an iframe to parent window).  
+If you don't provide `domain` as a parameter, `'*'` will be used.  
 
 ## Development
 
