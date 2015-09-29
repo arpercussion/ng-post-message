@@ -14,7 +14,7 @@ config(function(PostMessageProvider, appConfig) {
   var staticPath;
   // staticPath ='/angular-services/ng-post-message/';    //local
   staticPath ='/';    //nodejs (local)
-  // staticPath ='/ng-post-message/';   //gh-pages
+  staticPath ='/ng-post-message/';   //gh-pages
   var appPathRoute ='/';
   var pagesPath =staticPath+'pages/';
   
