@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myAppInside">
+<head>
+    <meta charset="utf-8">
+
+    <title>ng-post-message</title>
+
+</head>
+<body>
+
+  <div ng-controller='HomeInsideCtrl as vm'> 
+    <h3>Message is: </h3>
+    <pre>{{ vm.message }}</pre>
+
+    <button ng-click="vm.respondHello()">Respond Hello</button>
+  </div>
+
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
+  
+  <script type="text/javascript" src="-post-message.js"></script>
+  <!--<script type="text/javascript" src="-message.min.js"></script>-->
+  
+  <script type="text/javascript" src="app-inside.js"></script>
+  
+  <script type="text/javascript" src="pages/home/HomeInsideCtrl.js"></script>
+</body>
+</html>

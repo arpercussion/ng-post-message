@@ -81,8 +81,8 @@ module.exports = function(grunt) {
 				},
 				build: {
 					files:  {},
-					src:    '-message.js',
-					dest:   '-message.min.js'
+					src:    'post-message.js',
+					dest:   'post-message.min.js'
 				}
 			}/*,
 			karma: {

@@ -5,7 +5,7 @@
 
 'use strict';
 
-angular.module('myApp', [
+angular.module('myAppInside', [
 'petarslovic.ng-post-message'
 ]).
 config(function(PostMessageProvider, appConfig) {
@@ -22,5 +22,5 @@ config(function(PostMessageProvider, appConfig) {
 })
 .constant('appConfig', {
   allowedDomains: ['http://localhost:8080'],
-  iframeDomain: 'http://localhost:8080'
+  parentDomain: 'http://localhost:8080'
 });
