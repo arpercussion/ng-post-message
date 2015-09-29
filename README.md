@@ -37,7 +37,7 @@ To configure ng-post-message, inject it in the config phase like so:
     .config(function(PostMessageProvider) {
       PostMessageProvider.setAllowedDomains(['http://petarslovic.github.io']);
     });
-`
+```
 
 - **PostMessageProvider.setAllowedDomains(array)**  
 Set the list of domains that your app can communicate with.  
