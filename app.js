@@ -21,6 +21,6 @@ config(function(PostMessageProvider, appConfig) {
   PostMessageProvider.setAllowedDomains(appConfig.allowedDomains);
 })
 .constant('appConfig', {
-  allowedDomains: ['http://localhost:8080'],
-  iframeDomain: 'http://localhost:8080'
+  allowedDomains: ['http://petarslovic.github.io'],
+  iframeDomain: 'http://petarslovic.github.io'
 });

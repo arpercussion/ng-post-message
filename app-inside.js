@@ -21,6 +21,6 @@ config(function(PostMessageProvider, appConfig) {
   PostMessageProvider.setAllowedDomains(appConfig.allowedDomains);
 })
 .constant('appConfig', {
-  allowedDomains: ['http://localhost:8080'],
-  parentDomain: 'http://localhost:8080'
+  allowedDomains: ['http://petarslovic.github.io'],
+  parentDomain: 'http://petarslovic.github.io'
 });
