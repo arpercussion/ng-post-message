@@ -59,7 +59,7 @@ Message data is an object containing `messageName` and `data`.
 ```
 
 - **PostMessage.send(*messageName*, *data*, *iframeName*, *domain*)**  
-Sends a message with name `messageName` and data `data` to iframe with `[name="*iframeName*"]` that is located on the domain `domain`.  
+Sends a message with name `messageName` and data `data` to iframe with `[name="iframeName"]` that is located on the domain `domain`.  
 If you provide null as an `iframeName` the message will be sent to `window.parent` (for sending messages from an iframe to parent window).  
 If you don't provide `domain` as a parameter, `'*'` will be used.  
 
