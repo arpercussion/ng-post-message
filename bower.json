@@ -1,0 +1,26 @@
+{
+	"name": "ng-post-message",
+	"version": "1.0.0",
+	"authors": [
+		"Petar Slovic <petar.slovic@gmail.com>"
+	],
+	"description": "AngularJS Post Message API Wrapper",
+	"keywords": [
+		"angular",
+		"post",
+		"message"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular":"~1.2.0"
+	},
+	"devDependencies": {
+	}
+}
