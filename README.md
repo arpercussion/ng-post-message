@@ -51,10 +51,23 @@ Message name is like an event name, and callback will be executed when the messa
 When your callback is invoked, it will be provided the original event and message data as parameters in that order.  
 Message data is an object containing `messageName` and `data`.
 
+```
+  PostMessage.on('some-event', function(event, data) {
+    console.log(event, data);
+    vm.message = data;
+  });
+```
+
 - **PostMessage.send(*messageName*, *data*, *iframeName*, *domain*)**  
 Sends a message with name `messageName` and data `data` to iframe with `[name="*iframeName*"]` that is located on the domain `domain`.  
 If you provide null as an `iframeName` the message will be sent to `window.parent` (for sending messages from an iframe to parent window).  
 If you don't provide `domain` as a parameter, `'*'` will be used.  
+
+```
+  PostMessage.send('some-event', {
+    some: 'data'
+  }, 'myIframeName', 'http://petarslovic.github.io');
+```
 
 ## Development
 
