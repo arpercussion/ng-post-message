@@ -11,6 +11,7 @@
 		"message"
 	],
 	"license": "MIT",
+  "main": "post-message.js",
 	"ignore": [
 		"**/.*",
 		"node_modules",
@@ -19,7 +20,8 @@
 		"tests"
 	],
 	"dependencies": {
-		"angular":"~1.2.0"
+		"angular":"~1.2.0",
+    "lodash": "~4.0.0",
 	},
 	"devDependencies": {
 	}

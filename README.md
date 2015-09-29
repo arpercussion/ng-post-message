@@ -7,9 +7,9 @@ http://petarslovic.github.io/ng-post-message/
 
 ## Dependencies
 - required:
-	[TODO]
+	lodash
 - optional
-	[TODO]
+	
 
 See `bower.json` and `index.html` in the `gh-pages` branch for a full list / more details
 
@@ -18,15 +18,15 @@ See `bower.json` and `index.html` in the `gh-pages` branch for a full list / mor
 	1. Bower
 		1. add `"ng-post-message": "latest"` to your `bower.json` file then run `bower install` OR run `bower install ng-post-message`
 2. include the files in your app
-	1. `-message.min.js`
+	1. `post-message.min.js`
 3. include the module in angular (i.e. in `app.js`) - `petarslovic.ng-post-message`
 
 See the `gh-pages` branch, files `bower.json` and `index.html` for a full example.
 
 
 ## Documentation
-See the `-message.js` file top comments for usage examples and documentation
-https://github.com/petarslovic/ng-post-message/blob/master/-message.js
+See the `post-message.js` file top comments for usage examples and documentation
+https://github.com/petarslovic/ng-post-message/blob/master/post-message.js
 
 
 ## Development
@@ -37,7 +37,7 @@ https://github.com/petarslovic/ng-post-message/blob/master/-message.js
 	3. git commit your changes
 2. copy over core files (.js and .css/.less for directives) to master branch
 	1. `git checkout master`
-	2. `git checkout gh-pages -message.js -message.min.js -message.less -message.css -message.min.css`
+	2. `git checkout gh-pages post-message.js post-message.min.js`
 3. update README, CHANGELOG, bower.json, and do any other final polishing to prepare for publishing
 	1. git commit changes
 	2. git tag with the version number, i.e. `git tag v1.0.0`
