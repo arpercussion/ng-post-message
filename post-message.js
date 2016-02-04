@@ -67,8 +67,9 @@
         }
 
         var parsedData = typeof data === 'string' ? parseData(data) : data;
+        var messageName = parsedData.messageName || parsedData.message;
 
-        _.invoke(callbacks[parsedData.messageName], _.call, null, event, parsedData);
+        _.invoke(callbacks[messageName], _.call, null, event, parsedData);
         $rootScope.$digest();
       }
 
