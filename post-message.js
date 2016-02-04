@@ -66,7 +66,7 @@
           throw new Error('Receiving messages from domain ' + origin + ' must be explicitly allowed.');
         }
 
-        var parsedData = parseData(event.data);
+        var parsedData = typeof data === 'string' ? parseData(data) : data;
 
         _.invoke(callbacks[parsedData.messageName], _.call, null, event, parsedData);
         $rootScope.$digest();
