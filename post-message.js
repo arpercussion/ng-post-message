@@ -21,16 +21,16 @@
 
     this.$get = function($window, $rootScope) {
       var callbacks = {};
-      
+
       var api = {
         send: sendMessage,
         on: onMessage
       };
 
       angular.element(window).bind('message', onPostMessage);
-  
+
       return api;
-      
+
       function sendMessage(messageName, data, iframeName, domain) {
         var sender;
         var serializedData = serializeData(messageName, data);
@@ -59,8 +59,8 @@
       }
 
       function onPostMessage(event) {
-        var origin = event.origin;
-        var data = event.data;
+        var origin = event.origin || (event.originalEvent && event.originalEvent.origin) || null;
+        var data = event.data || (event.originalEvent && event.originalEvent.data) || 'null';
 
         if(allowedDomains.indexOf(origin) === -1) {
           throw new Error('Receiving messages from domain ' + origin + ' must be explicitly allowed.');
@@ -90,4 +90,4 @@
     };
 
   }
-})(); 
+})();
