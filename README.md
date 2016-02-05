@@ -1,7 +1,7 @@
 # AngularJS Post Message API Wrapper
 
-AngularJS Post Message API Wrapper.  
-Developed for communication between two Angular apps, but can be used with non-angular apps as well.  
+AngularJS Post Message API Wrapper.
+Developed for communication between two Angular apps, but can be used with non-angular apps as well.
 
 ## Demo
 http://petarslovic.github.io/ng-post-message/
@@ -14,13 +14,13 @@ See `bower.json` and `index.html` in the `gh-pages` branch for a full list / mor
 
 ## Install
 ### Get the files
-	Bower  
+	Bower
 		add `"ng-post-message": "latest"` to your `bower.json` file then run `bower install` OR run `bower install ng-post-message`
 
 ### Include the files in your app
   `post-message.min.js`
 
-### Include the module in angular  
+### Include the module in angular
   i.e. in `app.js` - `petarslovic.ng-post-message`
 
 See the `gh-pages` branch, files `bower.json` and `index.html` for a full example.
@@ -39,29 +39,36 @@ To configure ng-post-message, inject it in the config phase like so:
     });
 ```
 
-- **PostMessageProvider.setAllowedDomains(array)**  
-Set the list of domains that your app can communicate with.  
+- **PostMessageProvider.setAllowedDomains(array)**
+Set the list of domains that your app can communicate with.
 This list will be checked when your app receives a message.
 
 ### API
 
-- **PostMessage.on(*messageName*, *callback*)**  
-Registers message listeners.  
-Message name is like an event name, and callback will be executed when the message arrives.  
-When your callback is invoked, it will be provided the original event and message data as parameters in that order.  
+- **PostMessage.on(*messageName*, *callback*)**
+Registers message listeners.
+Message name is like an event name, and callback will be executed when the message arrives.
+When your callback is invoked, it will be provided the original event and message data as parameters in that order.
 Message data is an object containing `messageName` and `data`.
 
 ```
-  PostMessage.on('some-event', function(event, data) {
+  var offSomeEvent = PostMessage.on('some-event', function(event, data) {
     console.log(event, data);
     vm.message = data;
   });
 ```
 
-- **PostMessage.send(*messageName*, *data*, *iframeName*, *domain*)**  
-Sends a message with name `messageName` and data `data` to iframe with `[name="iframeName"]` that is located on the domain `domain`.  
-If you provide null as an `iframeName` the message will be sent to `window.parent` (for sending messages from an iframe to parent window).  
-If you don't provide `domain` as a parameter, `'*'` will be used.  
+The `PostMessage.on` method returns a deregister function that you can call to deregister that listener.
+For example, you would deregister a listener when a scope is destroyed (i.e. state changed).
+
+```
+  $scope.$on('$destroy', offSomeEvent);
+```
+
+- **PostMessage.send(*messageName*, *data*, *iframeName*, *domain*)**
+Sends a message with name `messageName` and data `data` to iframe with `[name="iframeName"]` that is located on the domain `domain`.
+If you provide null as an `iframeName` the message will be sent to `window.parent` (for sending messages from an iframe to parent window).
+If you don't provide `domain` as a parameter, `'*'` will be used.
 
 ```
   PostMessage.send('some-event', {
