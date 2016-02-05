@@ -13,6 +13,7 @@
     <pre>{{ vm.message }}</pre>
 
     <button ng-click="vm.sayHello()">Say Hello!</button>
+    <button ng-click="vm.stopListeningHello()">Stop listening for hello message</button>
   </div>
 
   <iframe ng-src="/ng-post-message/index-inside.html" height="300" width="700" name="inside"></iframe>
@@ -22,12 +23,12 @@
   <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
   <script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
   <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
-  
+
   <script type="text/javascript" src="post-message.js"></script>
   <!--<script type="text/javascript" src="-message.min.js"></script>-->
-  
+
   <script type="text/javascript" src="app.js"></script>
-  
+
   <script type="text/javascript" src="pages/home/HomeCtrl.js"></script>
 </body>
 </html>

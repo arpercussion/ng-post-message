@@ -56,6 +56,16 @@
         }
 
         callbacks[messageName].push(callback);
+
+        return offMessage(messageName, callback);
+      }
+
+      function offMessage(messageName, callback) {
+        return function() {
+          callbacks[messageName] = _.filter(callbacks[messageName], function(cb) {
+            return cb !== callback;
+          });
+        };
       }
 
       function onPostMessage(event) {

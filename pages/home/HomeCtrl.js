@@ -8,8 +8,9 @@ angular.module('myApp')
     var vm = this;
 
     vm.sayHello = sayHello;
+    vm.stopListeningHello = stopListeningHello;
 
-    PostMessage.on('responding-hello', function(event, data) {
+    var offHello = PostMessage.on('responding-hello', function(event, data) {
       console.log(event, data);
       vm.message = data;
     });
@@ -19,5 +20,9 @@ angular.module('myApp')
         some: 'data',
         time: (new Date()).valueOf()
       }, 'inside', appConfig.iframeDomain);
+    }
+
+    function stopListeningHello() {
+      offHello();
     }
   });

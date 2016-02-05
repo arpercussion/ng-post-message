@@ -5,7 +5,7 @@ var fs =require('fs');		//for image upload file handling
 var express = require('express');
 var app = express();
 
-var port =3000;
+var port =3002;
 var host ='localhost';
 var serverPath ='/';
 var staticPath ='/';
@@ -20,7 +20,7 @@ app.configure(function(){
 	// compress static content
 	app.use(express.compress());
 	app.use(serverPath, express.static(staticFilePath));		//serve static files
-	
+
 	app.use(express.bodyParser());		//for post content / files - not sure if this is actually necessary?
 });
 
