@@ -19,6 +19,7 @@ config(function(PostMessageProvider, appConfig) {
   var pagesPath =staticPath+'pages/';
 
   PostMessageProvider.setAllowedDomains(appConfig.allowedDomains);
+  PostMessageProvider.debug(true);
 })
 .constant('appConfig', {
   allowedDomains: ['http://petarslovic.github.io'],
