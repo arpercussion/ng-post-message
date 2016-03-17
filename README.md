@@ -43,6 +43,9 @@ To configure ng-post-message, inject it in the config phase like so:
 Set the list of domains that your app can communicate with.
 This list will be checked when your app receives a message.
 
+- **PostMessageProvider.debug(boolean)**
+Turn debug messages on or off.
+
 ### API
 
 - **PostMessage.on(*messageName*, *callback*)**
