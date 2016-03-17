@@ -99,16 +99,18 @@
         var messageName = parsedData.messageName || parsedData.message;
 
         // Don't allow Batarang messages to slow the app down :)
-        if(parsedData['__fromBatarang']) {
+        if(parsedData.__fromBatarang) {
           return;
         }
 
-        if(debug.on) {
-          $log.info('ng-post-message: onMessage', messageName, parsedData, origin);
-        }
+        if(callbacks[messageName] && callbacks[messageName].length) {
+          if(debug.on) {
+            $log.info('ng-post-message: onMessage', messageName, parsedData, origin);
+          }
 
-        _.invoke(callbacks[messageName], _.call, null, event, parsedData);
-        $rootScope.$digest();
+          _.invoke(callbacks[messageName], _.call, null, event, parsedData);
+          $rootScope.$digest();
+        }
       }
 
       function parseData(data) {

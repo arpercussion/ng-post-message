@@ -1,5 +1,15 @@
 Version numbers correspond to `bower.json` version
 
+# 1.0.10
+
+## Features
+
+## Bug Fixes
+
+- Don't do $rootScope.$digest() if there are no callbacks for the message.
+
+## Breaking Changes
+
 # 1.0.9
 
 ## Features
