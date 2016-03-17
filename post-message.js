@@ -99,7 +99,7 @@
         var messageName = parsedData.messageName || parsedData.message;
 
         if(debug.on) {
-          $log.info('ng-post-message: onMessage', messageName, parseData, origin);
+          $log.info('ng-post-message: onMessage', messageName, parsedData, origin);
         }
 
         _.invoke(callbacks[messageName], _.call, null, event, parsedData);
