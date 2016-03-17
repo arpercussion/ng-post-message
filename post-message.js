@@ -98,6 +98,11 @@
         var parsedData = typeof data === 'string' ? parseData(data) : data;
         var messageName = parsedData.messageName || parsedData.message;
 
+        // Don't allow Batarang messages to slow the app down :)
+        if(parsedData['__fromBatarang']) {
+          return;
+        }
+
         if(debug.on) {
           $log.info('ng-post-message: onMessage', messageName, parsedData, origin);
         }
