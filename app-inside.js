@@ -9,7 +9,7 @@ angular.module('myAppInside', [
 'petarslovic.ng-post-message'
 ]).
 config(function(PostMessageProvider, appConfig) {
-  
+
   // var staticPath ='/';
   var staticPath;
   // staticPath ='/angular-services/ng-post-message/';    //local
@@ -17,7 +17,7 @@ config(function(PostMessageProvider, appConfig) {
   staticPath ='/ng-post-message/';   //gh-pages
   var appPathRoute ='/';
   var pagesPath =staticPath+'pages/';
-  
+
   PostMessageProvider.setAllowedDomains(appConfig.allowedDomains);
 })
 .constant('appConfig', {

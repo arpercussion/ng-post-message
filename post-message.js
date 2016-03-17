@@ -14,12 +14,19 @@
 
   function PostMessageProvider() {
     var allowedDomains = [];
+    var debug = {
+      on: false
+    };
 
     this.setAllowedDomains = function(newAllowedDomains) {
       allowedDomains = newAllowedDomains;
     };
 
-    this.$get = function($window, $rootScope) {
+    this.debug = function(shouldDebug) {
+      debug.on = shouldDebug;
+    };
+
+    this.$get = function($window, $rootScope, $log) {
       var callbacks = {};
 
       var api = {
@@ -47,6 +54,10 @@
 
         sender = iframe ? iframe.contentWindow : $window.parent;
 
+        if(debug.on) {
+          $log.info('ng-post-message: sendMessage', messageName, data, iframeName, domain);
+        }
+
         sender.postMessage(serializedData, domain);
       }
 
@@ -57,6 +68,10 @@
 
         callbacks[messageName].push(callback);
 
+        if(debug.on) {
+          $log.info('ng-post-message: registered callback for ', messageName);
+        }
+
         return offMessage(messageName, callback);
       }
 
@@ -65,6 +80,10 @@
           callbacks[messageName] = _.filter(callbacks[messageName], function(cb) {
             return cb !== callback;
           });
+
+          if(debug.on) {
+            $log.info('ng-post-message: removed callback for', messageName);
+          }
         };
       }
 
@@ -78,6 +97,10 @@
 
         var parsedData = typeof data === 'string' ? parseData(data) : data;
         var messageName = parsedData.messageName || parsedData.message;
+
+        if(debug.on) {
+          $log.info('ng-post-message: onMessage', messageName, parseData, origin);
+        }
 
         _.invoke(callbacks[messageName], _.call, null, event, parsedData);
         $rootScope.$digest();
