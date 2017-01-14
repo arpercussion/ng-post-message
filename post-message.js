@@ -40,6 +40,12 @@
 
             return api;
 
+            function hasDomain(domain) {
+                return allowedDomains.some(function (el) {
+                    return el.toLowerCase() === domain.toLowerCase();
+                });
+            }
+
             function addDomain(domain) {
                 var index = allowedDomains.findIndex(function (el) {
                     return el.toLowerCase() === domain.toLowerCase();
@@ -59,10 +65,8 @@
                 var sender;
                 var serializedData = serializeData(messageName, data);
 
-                if (domain) {
-                    if (allowedDomains.indexOf(domain) === -1) {
-                        throw new Error('Sending messages to domain ' + domain + ' must be explicitly allowed.');
-                    }
+                if (domain && !hasDomain(domain)) {
+                    throw new Error('Sending messages to domain ' + domain + ' must be explicitly allowed.');
                 } else {
                     domain = '*';
                 }
@@ -108,7 +112,7 @@
                 var origin = event.origin || (event.originalEvent && event.originalEvent.origin) || null;
                 var data = event.data || (event.originalEvent && event.originalEvent.data) || 'null';
 
-                if (allowedDomains.indexOf(origin) === -1) {
+                if (hasDomain(origin)) {
                     throw new Error('Receiving messages from domain ' + origin + ' must be explicitly allowed.');
                 }
 
