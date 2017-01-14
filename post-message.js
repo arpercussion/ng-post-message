@@ -112,7 +112,7 @@
                 var origin = event.origin || (event.originalEvent && event.originalEvent.origin) || null;
                 var data = event.data || (event.originalEvent && event.originalEvent.data) || 'null';
 
-                if (hasDomain(origin)) {
+                if (!hasDomain(origin)) {
                     throw new Error('Receiving messages from domain ' + origin + ' must be explicitly allowed.');
                 }
 
